@@ -1,0 +1,7 @@
+entity.inscription_contactform.inscriptionContactForm_add:
+  path: '/inscription/contactform/add'
+  defaults:
+    _entity_form: inscription_contactform.add
+    _title: 'Send contact message'
+  requirements:
+    _permission: 'access content'

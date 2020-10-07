@@ -1,0 +1,5 @@
+name: Inscription Contactform
+type: module
+description: 'inscription aux activites du CRP Guinot'
+package: Inscription
+core: 8.x
