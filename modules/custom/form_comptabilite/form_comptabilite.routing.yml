@@ -1,0 +1,7 @@
+form_comptabilite:
+ path: /form/comptabilite 
+ defaults:
+   _title: comptabilite
+   _form:  \Drupal\form_comptabilite\Form\FormComptabilite
+ requirements:
+   _permission: 'access content' 

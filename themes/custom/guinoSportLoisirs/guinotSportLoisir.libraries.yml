@@ -1,0 +1,29 @@
+# Theme en Dev
+# Stagiaire DA2 / Guinot
+# Librairies of Guinot DA2
+librairies: 
+  version: VERSION
+  css:
+    base:
+    layout:
+    theme:
+      css/style.css: {}
+  js:
+    js/app.js: {}
+
+librairies: 
+  version: VERSION
+  css:
+    base:
+    layout:
+    theme:
+      vendor/foundation/css/foundation.css: {}
+  js:
+    vendor/foundation/js/app.js: {}
+
+
+  dependencies:
+    -core/jquery
+
+
+

@@ -1,0 +1,21 @@
+# Theme en Dev
+# Stagiaire DA2 / Guinot
+
+name: guinotSportLoisirs
+type: theme
+# base theme: classy
+description: "Theme en test dev."
+package: Core
+# version: VERSION 1.0
+# core: 8.x
+
+regions:
+  header: Header
+  content: Content
+  sidebar_first: 'Sidebar first'
+  footer: Footer
+# Information added by Drupal.org packaging script on 2019-05-01
+version: '1.0'
+core: '8.x'
+#project: 'drupal'
+#datestamp: 1556737125
