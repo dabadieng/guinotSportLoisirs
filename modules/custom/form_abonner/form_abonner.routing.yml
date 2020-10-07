@@ -2,6 +2,6 @@ form_abonner:
  path: /form/abonnement 
  defaults:
    _title: Abonnement
-   _form:  \Drupal\form_s_abonner\Form\FormAbonner
+   _form:  \Drupal\form_abonner\Form\FormAbonner
  requirements:
    _permission: 'access content' 

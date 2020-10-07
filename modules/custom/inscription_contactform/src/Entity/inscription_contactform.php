@@ -26,7 +26,7 @@ use Drupal\Core\Field\BaseFieldDefinition;
  * )
  */
 
-class inscriptionContactform extends ContentEntityBase implements ContentEntityInterface {
+class inscription_Contactform extends ContentEntityBase implements ContentEntityInterface {
 
   public static function baseFieldDefinitions(EntityTypeInterface $entity_type) {
     $fields['id'] = BaseFieldDefinition::create('integer')

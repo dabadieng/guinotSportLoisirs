@@ -25,7 +25,7 @@ class FormAbonner extends FormBase {
 
     $form['description'] = [
       '#type' => 'item',
-      '#markup' => $this->t('Inscription'),
+      '#markup' => $this->t('Inscrivez-vous !!!'),
     ];
 
      $form['indentifiant'] = [
@@ -39,7 +39,7 @@ class FormAbonner extends FormBase {
       '#type' => 'textfield',
       '#maxlength' => 30,
       '#title' => $this->t('Activité'),
-      '#description' => $this->t('Activité choisit'),
+      '#description' => $this->t('Entrer la ou les activités choisis '),
       '#required' => TRUE,
     ];
 
@@ -60,42 +60,17 @@ class FormAbonner extends FormBase {
       '#required' => TRUE,
     ];
 
-    $form['birth_date'] = [
+    $form['abonnement_date_debut'] = [
       '#type' => 'date',
-      '#title' => $this->t('Date de naissance'),
-      '#description' => $this->t('Votre ddn'),
+      '#title' => $this->t("Date de début d'abonnement souhaité"),
+      '#description' => $this->t("Date d'abonnement souhaité"),
       '#required' => TRUE,
     ];
 
-    $form['city'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 20,
-      '#title' => $this->t('Ville'),
-      '#description' => $this->t('Ajouter votre ville'),
-      '#required' => TRUE,
-    ];
-   
-    $form['cp'] = [
-      '#type' => 'number',
-      '#title' => $this->t('cp'),
-      '#description' => $this->t('Code Postale.'),
-      '#required' => TRUE,
-    ];
-
-    $form['country'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 20,
-      '#title' => $this->t('Pays'),
-      '#description' => $this->t('Votre pays'),
-      '#required' => TRUE,
-    ];
-
-   
-
-    $form['adress'] = [
-      '#type' => 'textfield',
-      '#title' => $this->t('adresse'),
-      '#description' => $this->t('Adresse'),
+    $form['abonnement_date_fin'] = [
+      '#type' => 'date',
+      '#title' => $this->t("Date de fin d'abonnement souhaité"),
+      '#description' => $this->t("Date d'abonnement souhaité"),
       '#required' => TRUE,
     ];
 
@@ -130,10 +105,8 @@ class FormAbonner extends FormBase {
     // Check if string input contains any invalid characters.
     $firstname = $form_state->getValue('firstname');
     $lastname = $form_state->getValue('lastname');
-    $city = $form_state->getValue('city');
-    $country = $form_state->getValue('country');
     $phone = $form_state->getValue('phone');
-    $internet = $form_state->getValue('internet');
+    
     if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
       $form_state->setErrorByName('firstname', $this->t('Your firstname should contain only letters.'));
     }
