@@ -75,15 +75,12 @@ class FormComptabilite extends FormBase {
       '#required' => TRUE,
     ];
 
-    $fields['message'] = BaseFieldDefinition::create('string_long')
-      ->setLabel(t('Message'))
-      ->setDescription(t('Message of contacting person'))
-      ->setDisplayOptions('form',
-        [
-          'type' => 'string_textarea',
-          'weight' => 2,
-        ]
-        );
+    $form['message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('message'),
+      '#description' => $this->t('message'),
+      '#required' => TRUE,
+      ];
    
     $form['actions']['#type'] = 'actions';
     $form['actions']['submit'] = [

@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\form_abonner\Form;
+namespace Drupal\form_webmaster\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,40 +8,36 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * {@inheritdoc}
  */
-class FormAbonner extends FormBase {
+class Formwebmaster extends FormBase
+{
 
   /**
    * @return string
    *   The unique ID of this form defined by this class
    */
-  public function getFormId() {
-    return 'form_abonner';
+  public function getFormId()
+  {
+    return 'form_webmaster';
   }
 
   /**
    * {@inheritdoc}
    */
-  public function buildForm(array $form, FormstateInterface $form_state) {
+  public function buildForm(array $form, FormstateInterface $form_state)
+  {
 
     $form['description'] = [
       '#type' => 'item',
       '#markup' => $this->t('Inscrivez-vous !!!'),
     ];
 
-     $form['indentifiant'] = [
+    $form['indentifiant'] = [
       '#type' => 'hidden',
       '#title' => $this->t('Identifiant'),
       '#description' => $this->t('Identifiant'),
       '#required' => FALSE,
     ];
 
-    $form['activity'] = [
-      '#type' => 'textfield',
-      '#maxlength' => 30,
-      '#title' => $this->t('Activité'),
-      '#description' => $this->t('Entrer la ou les activités choisis '),
-      '#required' => TRUE,
-    ];
 
     $form['firstname'] = [
       '#type' => 'textfield',
@@ -49,7 +45,7 @@ class FormAbonner extends FormBase {
       '#title' => $this->t('Prénom'),
       '#description' => $this->t('Votre prénom'),
       '#required' => TRUE,
-      
+
     ];
 
     $form['lastname'] = [
@@ -60,19 +56,6 @@ class FormAbonner extends FormBase {
       '#required' => TRUE,
     ];
 
-    $form['abonnement_date_debut'] = [
-      '#type' => 'date',
-      '#title' => $this->t("Date de début d'abonnement souhaité"),
-      '#description' => $this->t("Date d'abonnement souhaité"),
-      '#required' => TRUE,
-    ];
-
-    $form['abonnement_date_fin'] = [
-      '#type' => 'date',
-      '#title' => $this->t("Date de fin d'abonnement souhaité"),
-      '#description' => $this->t("Date d'abonnement souhaité"),
-      '#required' => TRUE,
-    ];
 
     $form['phone'] = [
       '#type' => 'tel',
@@ -87,7 +70,21 @@ class FormAbonner extends FormBase {
       '#description' => $this->t('Votre adresse e-mail'),
       '#required' => TRUE,
     ];
-   
+
+    $form['objet'] = [
+      '#type' => 'textfield',
+      '#title' => $this->t('Object'),
+      '#description' => $this->t('Objet'),
+      '#required' => TRUE,
+    ];
+
+    $form['message'] = [
+      '#type' => 'textarea',
+      '#title' => $this->t('message'),
+      '#description' => $this->t('message'),
+      '#required' => TRUE,
+    ];
+
     $form['actions']['#type'] = 'actions';
     $form['actions']['submit'] = [
       '#type' => 'submit',
@@ -100,13 +97,16 @@ class FormAbonner extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function validateForm(array &$form, FormStateInterface $form_state) {
+  public function validateForm(array &$form, FormStateInterface $form_state)
+  {
 
     // Check if string input contains any invalid characters.
     $firstname = $form_state->getValue('firstname');
     $lastname = $form_state->getValue('lastname');
     $phone = $form_state->getValue('phone');
-    
+    $objet = $form_state->getValue('objet');
+    $message = $form_state->getValue('message');
+
     if (!preg_match("/^[a-zA-Z ]*$/", $firstname)) {
       $form_state->setErrorByName('firstname', $this->t('Your firstname should contain only letters.'));
     }
@@ -118,7 +118,7 @@ class FormAbonner extends FormBase {
     if (!preg_match("/^[a-zA-Z ]*$/", $city)) {
       $form_state->setErrorByName('city', $this->t('Your city should contain only letters.'));
     }
-    
+
     if (!preg_match('|^http(s)?://[a-z0-9-]+(.[a-z0-9-]+)*(:[0-9]+)?(/.*)?$|i', $internet)) {
       $form_state->setErrorByName('internet', $this->t('Your internet adress is not valid.'));
     }
@@ -148,7 +148,8 @@ class FormAbonner extends FormBase {
   /**
    * {@inheritdoc}
    */
-  public function submitForm(array &$form, FormStateInterface $form_state) {
+  public function submitForm(array &$form, FormStateInterface $form_state)
+  {
     // Capitalise the first letter of the strings.
     $form_state->setValue('firstname', ucfirst($form_state->getValue('firstname')));
     $form_state->setValue('lastname', ucfirst($form_state->getValue('lastname')));
@@ -161,13 +162,9 @@ class FormAbonner extends FormBase {
       '@firstname' => $form_state->getValue('firstname'),
       '@lastname' => $form_state->getValue('lastname'),
       '@birth_date' => $form_state->getValue('birth_date'),
-      '@city' => $form_state->getValue('city'),
-      '@cp' => $form_state->getValue('cp'),
-      '@adress' => $form_state->getValue('adress'),
       '@email' => $form_state->getValue('email'),
       '@phone' => $form_state->getValue('phone'),
       '@country' => $form_state->getValue('country'),
     ]));
   }
-
 }

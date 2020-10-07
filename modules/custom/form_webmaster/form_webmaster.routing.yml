@@ -1,0 +1,7 @@
+form_webmaster:
+ path: /form/webmaster 
+ defaults:
+   _title: webmaster
+   _form:  \Drupal\form_webmaster\Form\FormWebmaster
+ requirements:
+   _permission: 'access content' 
