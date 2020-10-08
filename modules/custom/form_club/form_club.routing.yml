@@ -1,0 +1,7 @@
+form_club:
+ path: /form/club
+ defaults:
+   _title: club
+   _form:  \Drupal\form_club\Form\FormClub
+ requirements:
+   _permission: 'access content' 

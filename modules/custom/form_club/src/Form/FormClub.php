@@ -1,6 +1,6 @@
 <?php
 
-namespace Drupal\form_webmaster\Form;
+namespace Drupal\form_club\Form;
 
 use Drupal\Core\Form\FormBase;
 use Drupal\Core\Form\FormStateInterface;
@@ -8,14 +8,14 @@ use Drupal\Core\Form\FormStateInterface;
 /**
  * {@inheritdoc}
  */
-class Formwebmaster extends FormBase {
+class Formclub extends FormBase {
 
   /**
    * @return string
    *   The unique ID of this form defined by this class
    */
   public function getFormId() {
-    return 'form_webmaster';
+    return 'form_club';
   }
 
   /**
